@@ -1,10 +1,8 @@
-import { StackScreenProps } from '@react-navigation/stack';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Image } from 'react-native';
 import { Text, GradientView, View, ContainedButton, OutlinedButton } from '../components/Themed';
 import GlobalStyles from '../constants/GlobalStyles'
 import Navigation from '../navigation';
-import { StatusBar } from 'expo-status-bar';
 import useColorScheme from "../hooks/useColorScheme";
 
 const logo = require('../assets/images/logo.png')
@@ -53,7 +51,6 @@ export default function LandingScreen() : JSX.Element {
     return (
         <>
             <Navigation colorScheme={colorScheme} />
-            <StatusBar style="light"/>
         </>
     )
 }
