@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Text as DefaultText, View as DefaultView } from 'react-native';
 
 import Colors from '../constants/Colors';
+import Layout from '../constants/Layout';
 import useColorScheme from '../hooks/useColorScheme';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -37,5 +39,23 @@ export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps}/>;
+}
+export function GradientView(props: ViewProps) {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+
+  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps}>
+    <LinearGradient
+        // Background Linear Gradient
+        colors={['#AB4356', '#630E97']}
+        style={{
+          height: Layout.window.height,
+          width: Layout.window.width,
+          position: 'absolute',
+          zIndex: -1,
+        }}
+      />
+      {props.children}
+  </DefaultView>;
 }
