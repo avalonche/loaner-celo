@@ -1,47 +1,85 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Text, GradientView } from '../components/Themed';
+import { Text, GradientView, View, ContainedButton, OutlinedButton } from '../components/Themed';
+import GlobalStyles from '../constants/GlobalStyles'
+import Navigation from '../navigation';
+import { StatusBar } from 'expo-status-bar';
+import useColorScheme from "../hooks/useColorScheme";
 
 import { RootStackParamList } from '../types';
 const logo = require('../assets/images/logo.png')
-export default function LandingScreen({
-  navigation,
-}: StackScreenProps<RootStackParamList, 'NotFound'>) {
-  return (
-    <GradientView style={styles.container}>
-      <Text style={styles.title}>This screen doesn't exist.</Text>
-      <Image
-          style={{
-              height: 50,
-          }}
-          source={logo}
-        />
-      <TouchableOpacity onPress={() => navigation.replace('Root')} style={styles.link}>
-        <Text style={styles.linkText}>Go to home screen!</Text>
-      </TouchableOpacity>
-    </GradientView>
-  );
+
+export type ColorScheme = "light" | "dark";
+
+export default function LandingScreen() : JSX.Element {
+    const colorScheme = useColorScheme();
+    const styles = createStyles(colorScheme);
+    // TODO(chloe): In the future we'll use context or redux to check whether a user is 
+    // Authenticated or not  
+    const [user, setUser] = useState(false);
+    if (!user) {
+        // TODO(chloe): probably move this all into a separate component called - GreetingScreen
+        return (
+          <GradientView style={styles.container}>
+          <View style={{...styles.container, ...styles.logoContainer}}>
+            <Image
+                style={{height: 50}}
+                source={logo}
+              />
+          </View>
+          <View style={{
+              ...styles.container,
+              alignItems: 'stretch',
+              justifyContent: 'flex-start'
+          }}>
+              <ContainedButton 
+                  onPress={() => setUser(true)} 
+                  text="Connect with Walet"
+                  />
+              <OutlinedButton 
+                  onPress={() => setUser(true)} 
+                  text="Browse Loans"
+                  style={{marginVertical: 20}}
+              />
+              <Text style={styles.text}>
+                  Loanr enables decentralised
+                  microfinancing services for
+                  vulnerable communities.
+              </Text>
+          </View>
+          </GradientView>
+        );
+    }
+    return (
+        <>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
+        </>
+    )
 }
 
-const styles = StyleSheet.create({
+const createStyles = (colorScheme: ColorScheme) =>
+  StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'transparent',
     padding: 20,
   },
+  logoContainer: {
+    flexGrow: 1,
+    paddingTop: 100,
+  },
   title: {
-    fontSize: 20,
+    fontSize: GlobalStyles.consts.headerFontSize,
     fontWeight: 'bold',
   },
-  link: {
-    marginTop: 15,
-    paddingVertical: 15,
-  },
-  linkText: {
-    fontSize: 14,
-    color: '#2e78b7',
+  text: {
+    ...GlobalStyles.styles.textPrimary,
+    color: 'white',  
+    textAlign: 'center',
+    marginTop: 30,
   },
 });

@@ -54,7 +54,7 @@ function TabOneNavigator() {
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="TabOneScreen"
-        component={LandingScreen}
+        component={TabOneScreen}
         options={{ 
           headerTitle: 'Tab One Title',
           headerStyle: styles.headerContainer,
