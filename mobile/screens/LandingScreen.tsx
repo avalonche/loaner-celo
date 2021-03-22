@@ -35,7 +35,7 @@ export default function LandingScreen() : JSX.Element {
           }}>
               <ContainedButton 
                   onPress={() => setUser(true)} 
-                  text="Connect with Walet"
+                  text="Connect with Wallet"
                   />
               <OutlinedButton 
                   onPress={() => setUser(true)} 

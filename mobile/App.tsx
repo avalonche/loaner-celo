@@ -29,8 +29,6 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <LandingScreen/>
-        {/* <Navigation colorScheme={colorScheme} />
-        <StatusBar /> */}
       </SafeAreaProvider>
     );
   }

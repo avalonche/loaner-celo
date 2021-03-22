@@ -47,19 +47,20 @@ export function GradientView(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps}>
+  return (
+  <DefaultView style={[{ backgroundColor }, style]} {...otherProps}>
     <LinearGradient
-        // Background Linear Gradient
-        colors={['#AB4356', '#630E97']}
-        style={{
-          height: Layout.window.height,
-          width: Layout.window.width,
-          position: 'absolute',
-          zIndex: -1,
-        }}
-      />
-      {props.children}
-  </DefaultView>;
+      colors={['#AB4356', '#630E97']}
+      style={{
+        height: Layout.window.height,
+        width: Layout.window.width,
+        position: 'absolute',
+        zIndex: -1,
+      }}
+    />
+    {props.children}
+  </DefaultView>
+  );
 }
 
 export function ContainedButton(props: TouchableOpacityProps & { text: string }) {
