@@ -29,6 +29,7 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <LandingScreen/>
+        <StatusBar style="light"/>
       </SafeAreaProvider>
     );
   }

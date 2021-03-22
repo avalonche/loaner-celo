@@ -7,7 +7,6 @@ import Navigation from '../navigation';
 import { StatusBar } from 'expo-status-bar';
 import useColorScheme from "../hooks/useColorScheme";
 
-import { RootStackParamList } from '../types';
 const logo = require('../assets/images/logo.png')
 
 export type ColorScheme = "light" | "dark";
@@ -54,7 +53,7 @@ export default function LandingScreen() : JSX.Element {
     return (
         <>
             <Navigation colorScheme={colorScheme} />
-            <StatusBar />
+            <StatusBar style="light"/>
         </>
     )
 }
