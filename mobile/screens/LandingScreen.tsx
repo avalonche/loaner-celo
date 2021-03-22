@@ -53,7 +53,6 @@ export default function LandingScreen() : JSX.Element {
     return (
         <>
             <Navigation colorScheme={colorScheme} />
-            <StatusBar style="light"/>
         </>
     )
 }
