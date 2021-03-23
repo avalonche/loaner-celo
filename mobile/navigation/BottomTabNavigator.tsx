@@ -2,11 +2,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { StyleSheet } from "react-native";
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import LandingScreen from '../screens/LandingScreen';
+import GlobalStyles from '../constants/GlobalStyles'
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -52,7 +55,11 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ 
+          headerTitle: 'Tab One Title',
+          headerStyle: styles.headerContainer,
+          headerTransparent: true,
+        }}
       />
     </TabOneStack.Navigator>
   );
@@ -66,8 +73,25 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ 
+          headerTitle: 'Tab 2Title',
+          headerStyle: styles.headerContainer,
+          headerTransparent: true,
+        }}
       />
     </TabTwoStack.Navigator>
   );
 }
+
+
+const styles = StyleSheet.create({
+  headerText: {
+    ...GlobalStyles.styles.textHeader,
+    fontWeight: "700",
+    paddingLeft: 4,
+    color: 'red'
+  },
+  headerContainer: {
+    height: 120,
+  },
+});
