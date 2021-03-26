@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { LogBox } from "react-native";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { UserProvider } from "./context/userContext";
 import './global';
 import useCachedResources from './hooks/useCachedResources';
 import LandingScreen from './screens/LandingScreen';
@@ -32,8 +33,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <LandingScreen/>
-        <StatusBar style="light"/>
+        <UserProvider>
+          <LandingScreen/>
+          <StatusBar style="light"/>
+        </UserProvider>
       </SafeAreaProvider>
     );
   }
