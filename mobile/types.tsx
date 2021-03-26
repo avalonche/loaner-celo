@@ -1,5 +1,6 @@
 export type RootStackParamList = {
   Root: undefined;
+  Landing: undefined;
   NotFound: undefined;
 };
 

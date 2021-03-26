@@ -8,7 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { UserProvider } from "./context/userContext";
 import './global';
 import useCachedResources from './hooks/useCachedResources';
-import LandingScreen from './screens/LandingScreen';
+import useColorScheme from "./hooks/useColorScheme";
+import Navigation from "./navigation";
 
 // ignore warnings from polyfill modules
 LogBox.ignoreLogs([
@@ -18,6 +19,7 @@ LogBox.ignoreLogs([
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
+  const colorScheme = useColorScheme();
   
   // Loading custom fonts see https://directory.now.sh/ for fonts
   const [robotoLoaded] = useRoboto({
@@ -34,7 +36,7 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <UserProvider>
-          <LandingScreen/>
+          <Navigation colorScheme={colorScheme}/>
           <StatusBar style="light"/>
         </UserProvider>
       </SafeAreaProvider>

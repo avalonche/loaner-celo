@@ -1,6 +1,7 @@
 import { newKitFromWeb3 } from '@celo/contractkit';
 import { requestAccountAddress, waitForAccountAuth } from '@celo/dappkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StackScreenProps } from '@react-navigation/stack';
 import * as Linking from 'expo-linking';
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet } from 'react-native';
@@ -11,7 +12,7 @@ import { STORAGE_USER_ADDRESS, STORAGE_USER_PHONE } from '../constants';
 import GlobalStyles from '../constants/GlobalStyles';
 import { useUserContext } from '../context/userContext';
 import useColorScheme from "../hooks/useColorScheme";
-import Navigation from '../navigation';
+import { RootStackParamList } from '../types';
 import { getUserBalance } from '../utils';
 
 
@@ -19,12 +20,11 @@ const logo = require('../assets/images/logo.png')
 
 export type ColorScheme = "light" | "dark";
 
-export default function LandingScreen() : JSX.Element {
+export default function LandingScreen({ navigation }: StackScreenProps<RootStackParamList, 'Landing'>) : JSX.Element {
     const colorScheme = useColorScheme();
     const styles = createStyles(colorScheme);
     // TODO(chloe): In the future we'll use context or redux to check whether a user is 
-    // Authenticated or not  
-    const [user, setUser] = useState(false);
+    // connecting or not
     const [connecting, setConnecting] = useState(false);
     // React Context
     const { setUserWallet } = useUserContext();
@@ -77,45 +77,37 @@ export default function LandingScreen() : JSX.Element {
             setConnecting(false);
         }
     }
-
-    if (!user) {
-        // TODO(chloe): probably move this all into a separate component called - GreetingScreen
-        return (
-          <GradientView style={styles.container}>
-          <View style={{...styles.container, ...styles.logoContainer}}>
-            <Image
-                style={{height: 50}}
-                source={logo}
-              />
-          </View>
-          <View style={{
-              ...styles.container,
-              alignItems: 'stretch',
-              justifyContent: 'flex-start'
-          }}>
-              <ContainedButton 
-                  onPress={() => connectValora()} 
-                  text="Connect with Wallet"
-                  />
-              <OutlinedButton 
-                  onPress={() => setUser(true)} 
-                  text="Browse Loans"
-                  style={{marginVertical: 20}}
-              />
-              <Text style={styles.text}>
-                  Loanr enables decentralised
-                  microfinancing services for
-                  vulnerable communities.
-              </Text>
-          </View>
-          </GradientView>
-        );
-    }
+    // TODO(chloe): probably move this all into a separate component called - GreetingScreen
     return (
-        <>
-            <Navigation colorScheme={colorScheme} />
-        </>
-    )
+      <GradientView style={styles.container}>
+      <View style={{...styles.container, ...styles.logoContainer}}>
+        <Image
+            style={{height: 50}}
+            source={logo}
+          />
+      </View>
+      <View style={{
+          ...styles.container,
+          alignItems: 'stretch',
+          justifyContent: 'flex-start'
+      }}>
+          <ContainedButton 
+              onPress={() => connectValora()} 
+              text="Connect with Wallet"
+              />
+          <OutlinedButton 
+              onPress={() => navigation.navigate("Root")} 
+              text="Browse Loans"
+              style={{marginVertical: 20}}
+          />
+          <Text style={styles.text}>
+              Loanr enables decentralised
+              microfinancing services for
+              vulnerable communities.
+          </Text>
+      </View>
+      </GradientView>
+    );
 }
 
 const createStyles = (colorScheme: ColorScheme) =>
