@@ -12,12 +12,21 @@ export default function BrowseCommunityCard(props: CommunitySummary) {
   
     return (
       <View style={{
+        width: Layout.window.width * 0.9 - 10,
         flexDirection: 'column',
-        width: Layout.window.width * 0.9,
         marginTop: 10,
+        marginHorizontal: 5,
         backgroundColor: 'white',
         borderRadius: 4,
         height: 300,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 8,
+        elevation: 5,
       }}>
         <DefaultView style={{
           flexDirection: 'row',
@@ -29,8 +38,8 @@ export default function BrowseCommunityCard(props: CommunitySummary) {
             source={props.logo}
           />
           <DefaultView style={{
-            minWidth: Layout.window.width * 0.9 - 40,
             paddingHorizontal: 15,
+            paddingRight: 30,
           }}>
             <Text numberOfLines={1} style={{fontSize: 16, fontFamily: 'Roboto_500Medium'}}>{props.name}</Text>
             <Text numberOfLines={1} style={{fontSize: 12}}>{props.subtitle}</Text>
@@ -40,7 +49,7 @@ export default function BrowseCommunityCard(props: CommunitySummary) {
             style={{
               flexShrink: 2,
               flex: 2,
-              width: Layout.window.width * 0.9,
+              width: Layout.window.width * 0.9 - 10,
             }}
             source={props.image}
         />
