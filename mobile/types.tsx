@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from "react-native";
+
 export type RootStackParamList = {
   Root: undefined;
   Landing: undefined;
@@ -5,15 +7,28 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Browse: undefined;
+  Profile: undefined;
+  Settings: undefined;
   Home: undefined;
 };
 
 export type TabOneParamList = {
-  TabOneScreen: undefined;
+  Browse: undefined;
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+  Profile: undefined;
 };
+
+export type TabThreeParamList = {
+  Settings: undefined;
+};
+
+export type CommunitySummary = {
+  name: string,
+  subtitle: string, 
+  logo: ImageSourcePropType,
+  image: ImageSourcePropType,
+  description: string,
+}
