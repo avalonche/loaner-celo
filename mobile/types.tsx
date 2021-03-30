@@ -27,8 +27,10 @@ export type TabThreeParamList = {
 
 export type CommunitySummary = {
   name: string,
-  subtitle: string, 
   logo: ImageSourcePropType,
   image: ImageSourcePropType,
   description: string,
+  funders: number,
+  loansMade: number,
+  totalValueLocked: number,
 }

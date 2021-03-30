@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
       fontSize: consts.primaryFontSize,
       fontFamily: consts.primaryFontFamily,
   },
-  link: {
+  secondaryHeader: {
     fontFamily: 'Roboto_500Medium',
     textTransform: 'uppercase',
   }
