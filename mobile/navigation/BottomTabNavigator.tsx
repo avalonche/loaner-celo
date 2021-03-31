@@ -21,7 +21,21 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Browse"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBarOptions={{ 
+        activeTintColor: Colors[colorScheme].tint,
+        style: {
+          paddingTop: 10,
+          height: 70,
+          alignItems: 'center',
+        },
+        labelStyle: {
+          margin: 0,
+          flex: 1,
+          fontFamily: GlobalStyles.consts.secondaryFontFamily,
+          fontSize: GlobalStyles.consts.primaryFontSize,
+          textTransform: 'uppercase',
+        },
+      }}>
       <BottomTab.Screen
         name="Browse"
         component={BrowseTabNavigator}

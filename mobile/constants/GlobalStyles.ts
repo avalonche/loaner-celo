@@ -7,6 +7,7 @@ const consts = {
   primaryFontSize: 12,
   primaryFontFamily: 'Roboto_400Regular',
   headerFontFamily: 'Montserrat_500Medium',
+  secondaryFontFamily: 'Roboto_500Medium',
   headerContainerHeight: 120,
 };
 

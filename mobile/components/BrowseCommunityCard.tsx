@@ -49,6 +49,8 @@ export default function BrowseCommunityCard(props: CommunitySummary) {
       }}>
         <Image
             style={{
+              borderTopLeftRadius: 4,
+              borderTopRightRadius: 4,
               flexShrink: 2,
               flex: 1,
               width: Layout.window.width * 0.9 - 10,
