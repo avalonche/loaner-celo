@@ -12,6 +12,7 @@ import { View, Text } from './Themed';
   Adapted this code from: https://stackoverflow.com/a/9462382 
     
   Used to format a number into a shorthand form. 
+  E.g. 1000 -> 1k, 150,000 -> 150k, 1,000,000 -> 1M etc. 
 
   @param num: The number to format
   @param digits: The number of decimal places to include
