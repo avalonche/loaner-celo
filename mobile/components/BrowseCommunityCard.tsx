@@ -2,21 +2,28 @@ import * as React from 'react';
 import { View as DefaultView, Image} from 'react-native';
 import { StyleSheet } from "react-native";
 
-import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import GlobalStyles from '../constants/GlobalStyles';
 import { CommunitySummary } from '../types';
 import { View, Text } from './Themed';
 
+/*
+  Adapted this code from: https://stackoverflow.com/a/9462382 
+    
+  Used to format a number into a shorthand form. 
+
+  @param num: The number to format
+  @param digits: The number of decimal places to include
+*/
 export default function BrowseCommunityCard(props: CommunitySummary) {
     function nFormatter(num: number, digits: number = 0) {
       var si = [
         { value: 1, symbol: "" },
-        { value: 1E3, symbol: "k" },
-        { value: 1E6, symbol: "M" },
-        { value: 1E9, symbol: "B" },
-        { value: 1E12, symbol: "T" },
+        { value: 1E3, symbol: "k+" },
+        { value: 1E6, symbol: "M+" },
+        { value: 1E9, symbol: "B+" },
+        { value: 1E12, symbol: "T+" },
       ];
       var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
       var i;

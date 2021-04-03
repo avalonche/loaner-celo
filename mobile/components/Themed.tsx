@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text as DefaultText, View as DefaultView, TouchableOpacityProps, Image} from 'react-native';
+import { Text as DefaultText, View as DefaultView, TouchableOpacityProps } from 'react-native';
 
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
@@ -7,7 +7,6 @@ import useColorScheme from '../hooks/useColorScheme';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import GlobalStyles from '../constants/GlobalStyles';
-import { CommunitySummary } from '../types';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
