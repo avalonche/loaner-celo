@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -6,11 +6,10 @@ import { StyleSheet } from "react-native";
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import LandingScreen from '../screens/LandingScreen';
+import CommunitiesScreen from '../screens/CommunitiesScreen';
 import GlobalStyles from '../constants/GlobalStyles'
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -19,20 +18,41 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName="Browse"
+      tabBarOptions={{ 
+        activeTintColor: Colors[colorScheme].tint,
+        style: {
+          paddingTop: 10,
+          height: 70,
+          alignItems: 'center',
+        },
+        labelStyle: {
+          margin: 0,
+          flex: 1,
+          fontFamily: GlobalStyles.consts.secondaryFontFamily,
+          fontSize: GlobalStyles.consts.primaryFontSize,
+          textTransform: 'uppercase',
+        },
+      }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Browse"
+        component={BrowseTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="account-balance" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Profile"
+        component={ProfileTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Settings"
+        component={SettingsTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -41,45 +61,59 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: { name: React.ComponentProps<typeof MaterialIcons>['name']; color: string }) {
+  return <MaterialIcons size={20} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const BrowseTabStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+function BrowseTabNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
+    <BrowseTabStack.Navigator>
+      <BrowseTabStack.Screen
+        name="Browse"
+        component={CommunitiesScreen}
         options={{ 
-          headerTitle: 'Tab One Title',
-          headerStyle: styles.headerContainer,
-          headerTransparent: true,
+          headerTitle: 'Communities',
+          ...headerStyleOptions,
         }}
       />
-    </TabOneStack.Navigator>
+    </BrowseTabStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const ProfileTabStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
+function ProfileTabNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
+    <ProfileTabStack.Navigator>
+      <ProfileTabStack.Screen
+        name="Profile"
         component={TabTwoScreen}
         options={{ 
           headerTitle: 'Tab 2Title',
-          headerStyle: styles.headerContainer,
-          headerTransparent: true,
+          ...headerStyleOptions,
         }}
       />
-    </TabTwoStack.Navigator>
+    </ProfileTabStack.Navigator>
+  );
+}
+const SettingsTabStack = createStackNavigator<TabThreeParamList>();
+
+function SettingsTabNavigator() {
+  return (
+    <SettingsTabStack.Navigator>
+      <SettingsTabStack.Screen
+        name="Settings"
+        component={TabTwoScreen}
+        options={{ 
+          headerTitle: 'Tab 2Title',
+          ...headerStyleOptions,
+        }}
+      />
+    </SettingsTabStack.Navigator>
   );
 }
 
@@ -87,11 +121,19 @@ function TabTwoNavigator() {
 const styles = StyleSheet.create({
   headerText: {
     ...GlobalStyles.styles.textHeader,
-    fontWeight: "700",
+    fontWeight: 'bold',
+    color: 'white',
+    textTransform: 'uppercase',
     paddingLeft: 4,
-    color: 'red'
   },
   headerContainer: {
-    height: 120,
+    height: GlobalStyles.consts.headerContainerHeight,
   },
 });
+
+const headerStyleOptions = {
+  headerStyle: styles.headerContainer,
+  headerTransparent: true,
+  headerTintColor: '#fff',
+  headerTitleStyle: styles.headerText,
+}

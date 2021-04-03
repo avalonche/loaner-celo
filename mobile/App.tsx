@@ -1,5 +1,5 @@
 import { Montserrat_500Medium, useFonts as useMontserrat } from "@expo-google-fonts/montserrat";
-import { Roboto_400Regular, useFonts as useRoboto } from "@expo-google-fonts/roboto";
+import { Roboto_400Regular, Roboto_500Medium, useFonts as useRoboto } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
@@ -24,6 +24,7 @@ export default function App() {
   // Loading custom fonts see https://directory.now.sh/ for fonts
   const [robotoLoaded] = useRoboto({
     Roboto_400Regular,
+    Roboto_500Medium,
   });
 
   const [montserratLoaded] = useMontserrat({
