@@ -10,6 +10,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import CommunitiesScreen from '../screens/CommunitiesScreen';
 import GlobalStyles from '../constants/GlobalStyles'
 import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
+import FundingScreen from '../screens/FundingScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -79,6 +80,10 @@ function BrowseTabNavigator() {
           headerTitle: 'Communities',
           ...headerStyleOptions,
         }}
+      />
+      <BrowseTabStack.Screen
+        name="Fund"
+        component={FundingScreen}
       />
     </BrowseTabStack.Navigator>
   );

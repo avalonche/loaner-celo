@@ -15,6 +15,7 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   Browse: undefined;
+  Fund: undefined;
 };
 
 export type TabTwoParamList = {
