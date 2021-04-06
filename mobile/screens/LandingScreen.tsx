@@ -13,7 +13,7 @@ import GlobalStyles from '../constants/GlobalStyles';
 import { useUserContext } from '../context/userContext';
 import useColorScheme from "../hooks/useColorScheme";
 import { RootStackParamList } from '../types';
-import { getUserBalance } from '../utils';
+import { getCommunityContract, getUserBalance } from '../utils';
 
 
 const logo = require('../assets/images/logo.png')
@@ -27,12 +27,19 @@ export default function LandingScreen({ navigation }: StackScreenProps<RootStack
     // connecting or not
     const [connecting, setConnecting] = useState(false);
     // React Context
-    const { setUserWallet } = useUserContext();
+    const { setUserWallet, setManagerRole, setBorrowerRole } = useUserContext();
 
     const setupUser = async (address: string, phoneNumber: string) => {
         const web3 = new Web3(config.jsonRpc);
         const kit = newKitFromWeb3(web3);
         const balance = await getUserBalance(kit, address);
+
+        const communityContract = getCommunityContract(kit, config.communityAddress);
+        const managerRole = web3.utils.keccak256('MANAGER_ROLE');
+        const hasManagerRole = await communityContract.methods.hasRole(managerRole, address).call();
+        const isBorrower = (await communityContract.methods.allowedBorrowers(address).call()).toString() == "1";
+        setManagerRole(hasManagerRole);
+        setBorrowerRole(isBorrower);
         setUserWallet({
             address,
             phoneNumber,
