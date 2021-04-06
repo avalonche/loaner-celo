@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@celo/contractkit": "^1.0.2",
-    "@openzeppelin/contracts": "^3.4.1"
+    "@openzeppelin/contracts": "^3.4.1",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
