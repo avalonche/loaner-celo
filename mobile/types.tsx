@@ -1,5 +1,9 @@
 import { ImageSourcePropType } from "react-native";
 
+export type SubmitLoanParamList = {
+  loanAddress: string,
+}
+
 export type RootStackParamList = {
   Root: undefined;
   Landing: undefined;
@@ -9,6 +13,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Browse: undefined;
   Profile: undefined;
+  Loans: undefined;
   Settings: undefined;
   Home: undefined;
 };
@@ -20,9 +25,18 @@ export type TabOneParamList = {
 
 export type TabTwoParamList = {
   Profile: undefined;
+  ManageCommunity: undefined;
+  AddBorrower: undefined;
+  ManageLoans: undefined;
 };
 
 export type TabThreeParamList = {
+  UserLoans: undefined;
+  RequestLoan: undefined;
+  SubmitLoan: SubmitLoanParamList;
+};
+
+export type TabFourParamList = {
   Settings: undefined;
 };
 

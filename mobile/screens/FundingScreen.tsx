@@ -1,12 +1,12 @@
 import { newKitFromWeb3 } from "@celo/contractkit";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import config from "../config";
-import Web3 from 'web3';
-import { useUserContext } from "../context/userContext";
-import { celoWalletRequest } from "../utils/celoWallet";
-import { getCommunityContract } from "../utils";
+import { BigNumber } from "bignumber.js";
 import { useState } from "react";
-import BigNumber from "bignumber.js";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import Web3 from 'web3';
+import config from "../config";
+import { useUserContext } from "../context/userContext";
+import { getPoolContract } from "../utils";
+import { celoWalletRequest, Transaction } from "../utils/celoWallet";
 
 export default function FundingScreen({ }) {
     const { wallet }  = useUserContext();
@@ -15,7 +15,7 @@ export default function FundingScreen({ }) {
     const fundCommunity = async (amount: number) => {
         const web3 = new Web3(config.jsonRpc);
         const kit = newKitFromWeb3(web3);
-        const poolContract = getCommunityContract(kit, config.communityAddress)
+        const poolContract = getPoolContract(kit, config.poolAddress)
         const stableToken = await kit.contracts.getStableToken();
         const cUSDDecimals = await stableToken.decimals();
         const amountCUSD = new BigNumber(amount)
@@ -25,21 +25,21 @@ export default function FundingScreen({ }) {
             poolContract.options.address,
             amountCUSD,
         ).txo;
+        const approveTx: Transaction = {
+            from: wallet.address,
+            to: stableToken.address,
+            txObject,
+        }
+        const fundTx: Transaction = {
+            from: wallet.address,
+            to: poolContract.options.address,
+            txObject: poolContract.methods.join(amountCUSD),
+        }
         // approve
         await celoWalletRequest(
-            wallet.address,
-            stableToken.address,
-            txObject,
-            'approvepool',
-            kit 
-        );
-        // fund
-        await celoWalletRequest(
-            wallet.address,
-            poolContract.options.address,
-            poolContract.methods.join(amountCUSD),
+            [approveTx, fundTx],
             'fundpool',
-            kit,
+            kit 
         );
     }
 

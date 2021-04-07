@@ -9,8 +9,13 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import CommunitiesScreen from '../screens/CommunitiesScreen';
 import GlobalStyles from '../constants/GlobalStyles'
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList, TabFourParamList } from '../types';
 import FundingScreen from '../screens/FundingScreen';
+import Profile from '../screens/ProfileScreen';
+import RequestLoanScreen from '../screens/RequestLoanScreen';
+import SubmitLoanScreen from '../screens/SubmitLoanScreen';
+import ManageLoansScreen from '../screens/ManageLoansScreen';
+import UserLoansScreen from '../screens/UserLoansScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -47,6 +52,13 @@ export default function BottomTabNavigator() {
         component={ProfileTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Loans"
+        component={LoanTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="attach-money" color={color}/>
         }}
       />
       <BottomTab.Screen
@@ -96,16 +108,57 @@ function ProfileTabNavigator() {
     <ProfileTabStack.Navigator>
       <ProfileTabStack.Screen
         name="Profile"
-        component={TabTwoScreen}
+        component={Profile}
         options={{ 
-          headerTitle: 'Tab 2Title',
+          headerTitle: 'Profile',
+          ...headerStyleOptions,
+        }}
+      />
+      <ProfileTabStack.Screen
+        name="ManageLoans"
+        component={ManageLoansScreen}
+        options={{
+          headerTitle: 'Manage Loans',
           ...headerStyleOptions,
         }}
       />
     </ProfileTabStack.Navigator>
   );
 }
-const SettingsTabStack = createStackNavigator<TabThreeParamList>();
+
+const LoanTabStack = createStackNavigator<TabThreeParamList>();
+
+function LoanTabNavigator() {
+  return (
+    <LoanTabStack.Navigator>
+      <LoanTabStack.Screen
+        name="UserLoans"
+        component={UserLoansScreen}
+        options={{
+          headerTitle: 'Your Loans',
+          ...headerStyleOptions,
+        }}
+      />
+      <LoanTabStack.Screen
+        name="RequestLoan"
+        component={RequestLoanScreen}
+        options={{
+          headerTitle: 'Request Loan',
+          ...headerStyleOptions,
+        }}
+      />
+      <LoanTabStack.Screen
+        name="SubmitLoan"
+        component={SubmitLoanScreen}
+        options={{
+          headerTitle: 'Submit Loan',
+          ...headerStyleOptions,
+        }}
+      />
+    </LoanTabStack.Navigator>
+  )
+}
+const SettingsTabStack = createStackNavigator<TabFourParamList>();
 
 function SettingsTabNavigator() {
   return (

@@ -1,16 +1,15 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native';
-import { Text, GradientView } from '../components/Themed';
+import { ScrollView, StyleSheet } from 'react-native';
 import BrowseCommunityCard from '../components/BrowseCommunityCard';
+import { GradientView, Text } from '../components/Themed';
 import GlobalStyles from '../constants/GlobalStyles';
 import Layout from '../constants/Layout';
-import { CommunitySummary, TabOneParamList } from '../types';
-import { StackScreenProps } from '@react-navigation/stack';
+import { CommunitySummary, TabTwoParamList } from '../types';
 
-export default function CommunitiesScreen({ navigation }: StackScreenProps<TabOneParamList, 'Fund'>) {
+export default function CommunitiesScreen({ navigation }: StackScreenProps<TabTwoParamList, 'ManageCommunity'>) {
     const CommunitiesList = communities.map((communitySummary: CommunitySummary, index) => {
-        return <BrowseCommunityCard key={index} {...communitySummary} onPress={() => navigation.navigate('Fund')}></BrowseCommunityCard>
+        return <BrowseCommunityCard key={index} {...communitySummary} onPress={() => navigation.navigate('ManageCommunity')}></BrowseCommunityCard>
     });
 
     return (

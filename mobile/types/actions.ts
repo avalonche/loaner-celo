@@ -1,5 +1,5 @@
-import { RESET_USER_INFO, SET_BORROWER, SET_MANAGER, SET_USER_BALANCE, SET_USER_CELO_WALLET_INFO } from "../constants";
-import { Wallet } from "./state";
+import { APPEND_LOAN, CLEAR_LOANS, RESET_USER_INFO, SET_BORROWER, SET_LOANS, SET_MANAGER, SET_USER_BALANCE, SET_USER_CELO_WALLET_INFO } from "../constants";
+import { Loan, Wallet } from "./state";
 
 interface UserWalletAction {
     type: typeof SET_USER_CELO_WALLET_INFO,
@@ -32,3 +32,22 @@ export type UserActions =
     | UserManagerAction
     | UserBorrowerAction
     | ResetUserAction;
+
+interface SetLoansAction {
+    type: typeof SET_LOANS,
+    payload: Loan[],
+}
+
+interface AppendLoanAction {
+    type: typeof APPEND_LOAN,
+    payload: Loan,
+}
+
+interface ClearLoansAction {
+    type: typeof CLEAR_LOANS;
+    payload: unknown;
+}
+export type LoanActions =
+    | SetLoansAction
+    | AppendLoanAction
+    | ClearLoansAction;
