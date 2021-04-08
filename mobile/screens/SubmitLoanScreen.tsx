@@ -1,13 +1,14 @@
 import { newKitFromWeb3 } from "@celo/contractkit";
 import { StackScreenProps } from "@react-navigation/stack";
-import { useState } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import React, { useState } from "react";
 import Web3 from 'web3';
 import config from "../config";
+import { StyleSheet } from 'react-native';
 import { useUserContext } from "../context/userContext";
 import { TabThreeParamList } from "../types";
 import { getCommunityContract } from "../utils";
 import { celoWalletRequest, Transaction } from "../utils/celoWallet";
+import { GradientView, OutlinedButton } from "../components/Themed";
 
 export default function SubmitLoanScreen({
   route,
@@ -28,13 +29,26 @@ export default function SubmitLoanScreen({
       to: communityContract.options.address,
       txObject: communityContract.methods.submit(loanAddress),
     };
+
     await celoWalletRequest([submitLoanTx], 'submitloan', kit);
     setSubmitted(true);
   };
 
   return (
-    <TouchableOpacity onPress={submitLoan}>
-      {submitted ? "Submit Loan to Community" : "Submitted"}
-    </TouchableOpacity>
+    <GradientView style={styles.container}>
+      <OutlinedButton onPress={submitLoan} text={submitted ? "Submitted" : "Submit Loan to Community"}/>
+    </GradientView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    padding: 20,
+  },
+});
+
+

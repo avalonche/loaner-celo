@@ -1556,7 +1556,7 @@
   dependencies:
     lodash "^4.17.4"
 
-"@expo/vector-icons@^12.0.0", "@expo/vector-icons@^12.0.4":
+"@expo/vector-icons@^12.0.0":
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-12.0.4.tgz#52061fffab83ca74af52288b5f839b090f7dabed"
   integrity sha512-/EFbXri7jZmqj1jTY6wpauvMN0DY0Epic003d43yWqrScLlVERaxXrOR07BNuCZvVMHBAzXN4VbOzUUUTq6j8g==
@@ -4930,7 +4930,7 @@ expo-constants@~8.0.0:
   dependencies:
     ua-parser-js "^0.7.19"
 
-expo-constants@~9.3.0, expo-constants@~9.3.3:
+expo-constants@~9.3.3:
   version "9.3.5"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-9.3.5.tgz#78085763e8ed100a5f2df7c682fd99631aa03d5e"
   integrity sha512-qIlv2ffSjQl3wrvJwXYoNfQNfH/sK46EXcgyEQnQ1SAQO4ukwTEpG9j3fdW6aTiVEVrv/DsA1IaVRqKrUwSd3A==
@@ -5007,7 +5007,7 @@ expo-linear-gradient@~8.4.0:
   resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-8.4.0.tgz#34e6f960b1971c57dacf7211c747ba490a76bf63"
   integrity sha512-f9JOXaIl0MR8RBYRIud5UAsEi52oz81XhQs73VUpujemHjOyHmrZa6dqwf399YOwI/WBwbpcINcUIw/mCYE1mA==
 
-expo-linking@~2.0.0, expo-linking@~2.0.1:
+expo-linking@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-2.0.1.tgz#0ac0298039b0f7f6c109d7efbbb661efc1c56760"
   integrity sha512-S+Bb5u1rlld6ZICKOQ4B/htHiIbtd9eJMpwXoWMcl68V+UNNxJisB5lUZePXWSoHlb0QbQfVOAf48u2WD588lQ==
@@ -5044,7 +5044,7 @@ expo-secure-store@~9.3.0:
   resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-9.3.0.tgz#b716d5d115cc50a34037d1afef84fe4b8ea0745c"
   integrity sha512-dNhKcoUUn+1kmEfFVxSU7h+YsqODqlExZQJcQgxgeiuCeeDvJWkE10t3jjrO6aNfrdM5i/X2l3oh401EDslWsQ==
 
-expo-splash-screen@0.8.1, expo-splash-screen@~0.8.0:
+expo-splash-screen@0.8.1, expo-splash-screen@~0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.8.1.tgz#de4a018c82af879eeaa9b697013ef37d9567453a"
   integrity sha512-7NQo8OgkfQ4sv4mIHE58fkiQTGyl5dOP70uAUTb5YXC/QUsHIqEpKQ6ZXDpkLU1cbZ32c8Vtok4r2FRIUrzxcg==
@@ -6600,7 +6600,7 @@ jest-environment-node@^25.5.0:
     jest-util "^25.5.0"
     semver "^6.3.0"
 
-jest-expo@~40.0.0:
+jest-expo@^40.0.0:
   version "40.0.2"
   resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-40.0.2.tgz#f30cf1c260cea4d26998a742d1d8cd1f55f7ccd4"
   integrity sha512-JTDOejimRu8MioZvOUe1tK0I3poLSgYXoFHxOar+u3RDh+pri1uRzQT5XXJMoW1tUOgH2ogYBOR5XBAhNae11w==
@@ -9019,7 +9019,7 @@ react-native-safe-area-context@3.1.9:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.9.tgz#48864ea976b0fa57142a2cc523e1fd3314e7247e"
   integrity sha512-wmcGbdyE/vBSL5IjDPReoJUEqxkZsywZw5gPwsVUV1NBpw5eTIdnL6Y0uNKHE25Z661moxPHQz6kwAkYQyorxA==
 
-react-native-screens@~2.15.0:
+react-native-screens@~2.15.2:
   version "2.15.2"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.15.2.tgz#a449700e895b462937211ec72ed6f09652758f06"
   integrity sha512-CagNf2APXkVoRlF3Mugr264FbKbrBg9eXUkqhIPVeZB8EsdS8XPrnt99yj/pzmT+yJMBY0dGrjXT8+68WYh6YQ==

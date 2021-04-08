@@ -8,9 +8,9 @@ import Layout from '../constants/Layout';
 import { CommunitySummary, TabOneParamList } from '../types';
 import { StackScreenProps } from '@react-navigation/stack';
 
-export default function CommunitiesScreen({ navigation }: StackScreenProps<TabOneParamList, 'Fund'>) {
+export default function CommunitiesScreen({ navigation }: StackScreenProps<TabOneParamList, 'Community'>) {
     const CommunitiesList = communities.map((communitySummary: CommunitySummary, index) => {
-        return <BrowseCommunityCard key={index} {...communitySummary} onPress={() => navigation.navigate('Fund')}></BrowseCommunityCard>
+        return <BrowseCommunityCard key={index} {...communitySummary} onPress={() => navigation.navigate('Community', communitySummary)}></BrowseCommunityCard>
     });
 
     return (

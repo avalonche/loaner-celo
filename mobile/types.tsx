@@ -20,12 +20,13 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   Browse: undefined;
-  Fund: undefined;
+  Community: CommunitySummary;
+  Fund: CommunitySummary;
 };
 
 export type TabTwoParamList = {
   Profile: undefined;
-  ManageCommunity: undefined;
+  ManageCommunities: undefined;
   AddBorrower: undefined;
   ManageLoans: undefined;
 };

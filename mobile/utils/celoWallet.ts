@@ -8,7 +8,7 @@ import {
     TxParams,
 } from '@celo/dappkit';
 import { TransactionReceipt } from 'web3-core';
-import { Linking } from 'expo';
+import * as Linking from 'expo-linking';
 
 export interface Transaction {
     from: string,
@@ -52,7 +52,7 @@ async function celoWalletRequest(
         return txResults;
     } catch (e) {
         // as transaction requests get pending, they then resume all at once
-        if (e.toLowerCase().includes('known transaction')) {
+       if (e.toLowerCase().includes('known transaction')) {
             return;
         }
         throw new Error(e);

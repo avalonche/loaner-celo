@@ -2,8 +2,8 @@ const ENV = {
     dev: {
         jsonRpc: 'https://alfajores-forno.celo-testnet.org',
         walletUrl: 'celo://wallet/dappkit',
-        communityAddress: '0xAF2A82a87595f9586322f6F0ebc97124A32E44c6',
-        poolAddress: '0x80d74E63B032cc488CFa32bc5210Ee66A0754A70',
+        communityAddress: '0x114af16428A99c63457b9D30e8794aac64a58eDD',
+        poolAddress: '0xd782253b3746708569427A718cE94986f10196d3',
         loanFactoryAddress: '0xfC1F006836cbafa0Aab968767a2F21b38f59a76b',
     },
     production: {

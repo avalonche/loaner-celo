@@ -20,10 +20,20 @@ export interface Loan {
   term: string;
   amount: string;
   status: LoanStatus;
+  internalStatus: InternalLoanStatus;
   borrower: string;
 }
 
 export enum LoanStatus {
+  Void,
+  Pending,
+  Retracted,
+  Running,
+  Settled,
+  Defaulted,
+}
+
+export enum InternalLoanStatus {
   Awaiting,
   Funded,
   Withdrawn,
