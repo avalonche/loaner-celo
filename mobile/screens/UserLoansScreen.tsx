@@ -6,6 +6,8 @@ import { StyleSheet, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Web3 from "web3";
 import { GradientView, OutlinedButton } from "../components/Themed";
+import ContentCard from "../components/ContentCard";
+import { ContainedButton } from "../components/Themed";
 import config from "../config";
 import { useLoanContext } from "../context/loanContext";
 import { useUserContext } from "../context/userContext";
@@ -142,10 +144,15 @@ export default function UserLoansScreen({
 
   return (
     <GradientView style={styles.container}>
-      <OutlinedButton
-        onPress={() => navigation.navigate("RequestLoan")}
-        text={"Request a Loan"}
-      />
+      <ContentCard
+        title={"Request a Loan"}
+        content={"Request to borrow money here. You will submit an application that will be reviewed by your community leaders."}
+        bottomAddon={
+          <ContainedButton
+            onPress={() => navigation.navigate("RequestLoan")}
+            text={"Request Loan"}
+          />}
+        />
       <Text>Your Loans</Text>
       <Text>Approved</Text>
       {ApprovedLoanList}

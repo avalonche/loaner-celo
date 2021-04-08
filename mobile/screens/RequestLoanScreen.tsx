@@ -4,6 +4,7 @@ import { BigNumber } from "bignumber.js";
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, TextInput } from "react-native";
 import Web3 from "web3";
+import GlobalStyles from '../constants/GlobalStyles';
 import { GradientView, OutlinedButton } from "../components/Themed";
 import config from "../config";
 import { useUserContext } from "../context/userContext";
@@ -52,8 +53,8 @@ export default function RequestLoanScreen({
 
   return (
     <GradientView style={styles.container}>
-      <Text>Community:</Text>
-      <Text>Interest Rate</Text>
+      <Text style={styles.labelText}>Community:</Text>
+      <Text style={styles.labelText}>Interest Rate</Text>
       <TextInput
         style={styles.input}
         onChangeText={setApy}
@@ -61,7 +62,7 @@ export default function RequestLoanScreen({
         keyboardType="numeric"
         placeholder={"Interest rate"}
       />
-      <Text>Loan Period (days)</Text>
+      <Text style={styles.labelText}>Loan Period (days)</Text>
       <TextInput
         style={styles.input}
         onChangeText={setTerm}
@@ -69,7 +70,7 @@ export default function RequestLoanScreen({
         keyboardType="numeric"
         placeholder={"Loan period (days)"}
       />
-      <Text>Loan Amount</Text>
+      <Text style={styles.labelText}>Loan Amount</Text>
       <TextInput
         style={styles.input}
         onChangeText={setAmount}
@@ -98,4 +99,17 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
   },
+
+  numerText: {
+    ...GlobalStyles.styles.secondaryHeader,
+    fontSize: GlobalStyles.consts.headerFontSize,
+  },
+  labelText: {
+    ...GlobalStyles.styles.textPrimary,
+  },
+  statsContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  }
 });
