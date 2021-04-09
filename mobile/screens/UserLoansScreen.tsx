@@ -2,12 +2,14 @@ import { newKitFromWeb3 } from "@celo/contractkit";
 import { StackScreenProps } from "@react-navigation/stack";
 import BigNumber from "bignumber.js";
 import React, { useEffect } from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Web3 from "web3";
 import { GradientView, OutlinedButton } from "../components/Themed";
 import ContentCard from "../components/ContentCard";
 import { ContainedButton } from "../components/Themed";
+import Layout from '../constants/Layout';
+import GlobalStyles from '../constants/GlobalStyles';
 import config from "../config";
 import { useLoanContext } from "../context/loanContext";
 import { useUserContext } from "../context/userContext";
@@ -133,10 +135,14 @@ export default function UserLoansScreen({
     .map((loan, index) => {
       return (
         <>
-          <Text>{loan.loanAddress}</Text>
-          <OutlinedButton
-            text={"Repay Loan"}
-            onPress={() => repayFunds(loan.loanAddress)}
+          <ContentCard
+            content={loan.loanAddress}
+            bottomAddon={
+              <ContainedButton
+                onPress={() => repayFunds(loan.loanAddress)}
+                text={"Repay Loan"}
+              />
+            }
           />
         </>
       );
@@ -144,20 +150,41 @@ export default function UserLoansScreen({
 
   return (
     <GradientView style={styles.container}>
-      <ContentCard
-        title={"Request a Loan"}
-        content={"Request to borrow money here. You will submit an application that will be reviewed by your community leaders."}
-        bottomAddon={
-          <ContainedButton
-            onPress={() => navigation.navigate("RequestLoan")}
-            text={"Request Loan"}
-          />}
-        />
-      <Text>Your Loans</Text>
-      <Text>Approved</Text>
-      {ApprovedLoanList}
-      <Text>To repay</Text>
-      {RepayLoanList}
+      <ScrollView style={styles.scrollContainer}>
+        <ContentCard
+          title={"Request a Loan"}
+          content={"Request to borrow money here. You will submit an application that will be reviewed by your community leaders."}
+          bottomAddon={
+            <ContainedButton
+              onPress={() => navigation.navigate("RequestLoan")}
+              text={"Request Loan"}
+            />}
+          />
+        {
+          ApprovedLoanList.length > 0 ?
+            <>
+              <ContentCard
+                title={"Your Approved Loans"}
+              />
+              {ApprovedLoanList}
+            </> :
+            <ContentCard
+              title={"Your Approved Loans"}
+              content={"You currently don't have any approved loans"}
+            />
+        }
+
+        {
+          RepayLoanList.length > 0 ?
+            <>
+              <ContentCard
+                title={"To Repay"}
+              />
+              {RepayLoanList}
+            </> : null
+        }
+        <Text style={{ paddingVertical: 40 }} />
+      </ScrollView>
     </GradientView>
   );
 }
@@ -165,9 +192,18 @@ export default function UserLoansScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scrollContainer: {
     backgroundColor: "transparent",
     padding: 20,
+    marginTop: GlobalStyles.consts.headerContainerHeight,
+    width: Layout.window.width,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingVertical: 10,
   },
 });
