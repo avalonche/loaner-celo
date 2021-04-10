@@ -16,7 +16,8 @@ export default function ContentCard(props: {
   content: string,
   bottomAddon: Component,
 }) {
-  const title = <Text numberOfLines={1} style={styles.title}>{props.title}</Text>;
+  const title = props.title !== undefined ?
+    <Text numberOfLines={1} style={styles.title}>{props.title}</Text> : null;
   const content = props.content !== undefined ?
     <Text numberOfLines={4} style={{fontSize: 16}}>
       {props.content}
