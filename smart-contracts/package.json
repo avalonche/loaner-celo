@@ -7,7 +7,8 @@
   },
   "scripts": {
     "pretest": "hardhat typechain",
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "deploy": "truffle migrate --network alfajores"
   },
   "author": "",
   "license": "ISC",

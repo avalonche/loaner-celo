@@ -388,7 +388,7 @@ contract LoanerPool is ERC20, ReentrancyGuard, Ownable {
      * @param loanToken LoanToken to fund
      */
     function fund(ILoanToken loanToken) external {
-        require(loanToken.borrower() == msg.sender, "LoanerPool: Sender is not borrower");
+        // require(loanToken.borrower() == msg.sender, "LoanerPool: Sender is not borrower");
         require(loanToken.isLoanToken(), "LoanerPool: Only LoanTokens can be funded");
         require(loanToken.currencyToken() == stablecoin, "LoanerPool: Only the same currency LoanTokens can be funded");
         // require(_loans.length < maxLoans, "LoanerPool: Loans number has reached the limit");
@@ -449,7 +449,7 @@ contract LoanerPool is ERC20, ReentrancyGuard, Ownable {
      * Called by owner to help manage funds in pool and save on gas for deposits
      * @param currencyAmount Amount of funds to deposit into curve
      */
-    function flush(uint256 currencyAmount) external onlyOwner {
+    function flush(uint256 currencyAmount) external onlyOwnerOrManager {
         require(currencyAmount <= currencyBalance(), "LoanerPool: Insufficient Balance");
         ILendingPool lendingPool = ILendingPool(moolaAddressesProvider.getLendingPool());
         address lendingPoolCore = moolaAddressesProvider.getLendingPoolCore();
@@ -464,7 +464,7 @@ contract LoanerPool is ERC20, ReentrancyGuard, Ownable {
      * @dev Remove liquidity from moola markets
      * @param aAmount amount of  aTokens
      */
-    function pull(uint256 aAmount) external onlyOwner {
+    function pull(uint256 aAmount) external onlyOwnerOrManager  {
         require(aAmount <= aTokenBalance(), "LoanerPool; Insufficient aToken Balance");
         IAToken aToken = getAToken();
         aToken.redeem(aAmount);
