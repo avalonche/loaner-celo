@@ -118,7 +118,8 @@ export default function CommunityScreen({
                   {
                     icon: "bank",
                     label: "Manage Funds",
-                    onPress: () => console.log("Pressed star"),
+                    onPress: () => 
+                      navigation.navigate("ManageFunds", route.params),
                   },
                   {
                     icon: "check-box-outline",

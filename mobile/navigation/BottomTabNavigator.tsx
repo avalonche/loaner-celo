@@ -17,6 +17,7 @@ import FundingScreen from "../screens/browse/fund/FundingScreen";
 import AddContactScreen from "../screens/browse/manage/AddContactScreen";
 import AddedScreen from "../screens/browse/manage/AddedScreen";
 import ManageLoansScreen from "../screens/browse/manage/ManageLoansScreen";
+import ManageFundsScreen from "../screens/browse/manage/ManageFundsScreen";
 import StakedScreen from "../screens/browse/manage/StakedScreen";
 import StakeLoanScreen from "../screens/browse/manage/StakeLoanScreen";
 import RepaidScreen from "../screens/loan/RepaidScreen";
@@ -48,6 +49,7 @@ const getIsTabBarVisible = (
     "Added",
     "Manage",
     "ManageLoans",
+    "ManageFunds",
     "StakeLoan",
     "Staked",
     "RequestLoan",
@@ -205,6 +207,14 @@ function BrowseTabNavigator() {
         component={ManageLoansScreen}
         options={{
           headerTitle: "Manage Loans",
+          ...headerStyleOptions,
+        }}
+      />
+      <BrowseTabStack.Screen
+        name="ManageFunds"
+        component={ManageFundsScreen}
+        options={{
+          headerTitle: "Manage Funds",
           ...headerStyleOptions,
         }}
       />
