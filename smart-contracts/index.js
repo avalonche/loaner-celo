@@ -11,14 +11,15 @@ async function initCommunities() {
         process.env.LOANER_ADDRESS,
     );
     kit.connection.addAccount(process.env.STAGING_PRIVATE_KEY);
-    
-    const addCommunityTxObject = await loanerInstance.methods.addCommunity(process.env.STAGING_WALLET_ADDRESS);
+
+    const addCommunityTxObject = await loanerInstance.methods.addCommunity(process.env.MANAGER_WALLET_ADDRESS);
     let tx = await kit.sendTransactionObject(addCommunityTxObject, { from: process.env.STAGING_WALLET_ADDRESS });
     let receipt = await tx.waitReceipt();
 
-    const addPoolTxObject = await loanerInstance.methods.addPool(receipt.events.returnValues._communityAddress, process.env.STAGING_WALLET_ADDRESS);
-    let tx = await kit.sendTransactionObject(addPoolTxObject, { from: process.env.STAGING_WALLET_ADDRESS });
-    let receipt = await tx.waitReceipt(); 
+    const addPoolTxObject = await loanerInstance.methods.addPool(receipt.events.CommunityAdded.returnValues._communityAddress, process.env.MANAGER_WALLET_ADDRESS);
+    tx = await kit.sendTransactionObject(addPoolTxObject, { from: process.env.STAGING_WALLET_ADDRESS, gas: 13000000 });
+    receipt = await tx.waitReceipt(); 
+    console.log(receipt.events.PoolAdded.returnValues);
 }
 
-initCommunities();
+initCommunities(); 
