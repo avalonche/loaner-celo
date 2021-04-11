@@ -224,7 +224,7 @@ export default function AddContactScreen({
   );
 }
 
-const addresses = ["0xcd421b34F15802b534EC1Dc98B98Ee6CCB416114", "0x7520f8e4b33e869a23a80bd6bef44eed0d3d23fa"];
+const addresses = ["0xcd421b34F15802b534EC1Dc98B98Ee6CCB416114", "0x7520f8e4b33e869a23a80bd6bef44eed0d3d23fa", "0xBB80D3289e3F8Ea4f56b90Da26644276A9bA89B2"];
 const generateContacts = (): ContactSummary[] => {
   faker.seed(123);
   const fakeContacts: ContactSummary[] = [];
