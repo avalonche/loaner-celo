@@ -1,19 +1,19 @@
 import { newKitFromWeb3 } from "@celo/contractkit";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { BigNumber } from "bignumber.js";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Web3 from "web3";
-import { GradientView, OutlinedButton } from "../components/Themed";
-import config from "../config";
-import Colors from "../constants/Colors";
-import GlobalStyles from "../constants/GlobalStyles";
-import { useUserContext } from "../context/userContext";
-import { TabOneParamList } from "../types";
-import { getPoolContract } from "../utils";
-import { celoWalletRequest, Transaction } from "../utils/celoWallet";
+import { GradientView, OutlinedButton } from "../../../components/Themed";
+import config from "../../../config";
+import Colors from "../../../constants/Colors";
+import GlobalStyles from "../../../constants/GlobalStyles";
+import { useUserContext } from "../../../context/userContext";
+import { TabOneParamList } from "../../../types";
+import { getPoolContract } from "../../../utils";
+import { celoWalletRequest, Transaction } from "../../../utils/celoWallet";
 
 export default function FundingScreen({
   navigation,
@@ -43,7 +43,6 @@ export default function FundingScreen({
   };
 
   const fundCommunity = async (fundAmount: number) => {
-    console.log(fundAmount);
     const web3 = new Web3(config.jsonRpc);
     const kit = newKitFromWeb3(web3);
     const poolContract = getPoolContract(kit, config.poolAddress);
@@ -60,7 +59,7 @@ export default function FundingScreen({
 
     await celoWalletRequest([fundTx], "fundpool", kit);
     setAmount("1");
-    // TODO: navigate to funding success screen to go back to community screen
+    navigation.navigate("Funded", { amount: fundAmount, ...route.params });
   };
 
   return (
@@ -149,7 +148,13 @@ export default function FundingScreen({
       </View>
       {approved ? (
         <>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              paddingVertical: 30,
+            }}
+          >
             <View
               style={{
                 flex: 1,
@@ -157,13 +162,18 @@ export default function FundingScreen({
                 backgroundColor: Colors.light.lightGray,
               }}
             />
-            <View>
+            <View style={{ alignItems: "center" }}>
               <AntDesign
                 name="checkcircleo"
-                size={20}
+                size={30}
                 color={Colors.light.lightGray}
+                style={{ padding: 10 }}
               />
-              ;
+              <Text
+                style={[styles.buttonText, GlobalStyles.styles.textPrimary]}
+              >
+                Approved
+              </Text>
             </View>
             <View
               style={{
@@ -241,6 +251,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "500",
     ...GlobalStyles.styles.secondaryHeader,
+    color: Colors.light.background,
   },
   active: {
     backgroundColor: Colors.light.tint,

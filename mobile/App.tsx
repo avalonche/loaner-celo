@@ -5,6 +5,8 @@ import {
 import {
   Roboto_400Regular,
   Roboto_500Medium,
+  Roboto_100Thin,
+  Roboto_700Bold,
   useFonts as useRoboto,
 } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
@@ -31,8 +33,10 @@ export default function App() {
 
   // Loading custom fonts see https://directory.now.sh/ for fonts
   const [robotoLoaded] = useRoboto({
+    Roboto_100Thin,
     Roboto_400Regular,
     Roboto_500Medium,
+    Roboto_700Bold,
   });
 
   const [montserratLoaded] = useMontserrat({

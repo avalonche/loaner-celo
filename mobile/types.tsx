@@ -2,6 +2,9 @@ import { ImageSourcePropType } from "react-native";
 
 export type SubmitLoanParamList = {
   loanAddress: string,
+  amount: string,
+  term: string,
+  apy: string,
 }
 
 export type RootStackParamList = {
@@ -22,19 +25,25 @@ export type TabOneParamList = {
   Browse: undefined;
   Community: CommunitySummary;
   Fund: CommunitySummary;
+  Funded: CommunitySummary & FundSummary;
+  AddContact: CommunitySummary;
+  Added: CommunitySummary & ContactSummary;
+  ManageLoans: CommunitySummary;
+  StakeLoan: StakeLoanParamList & CommunitySummary;
+  Staked: CommunitySummary;
 };
 
 export type TabTwoParamList = {
   Profile: undefined;
-  ManageCommunities: undefined;
-  AddBorrower: undefined;
-  ManageLoans: undefined;
 };
 
 export type TabThreeParamList = {
   UserLoans: undefined;
   RequestLoan: undefined;
   SubmitLoan: SubmitLoanParamList;
+  Submitted: undefined;
+  RepayLoan: RepayLoanParamList;
+  Repaid: undefined;
 };
 
 export type TabFourParamList = {
@@ -49,4 +58,25 @@ export type CommunitySummary = {
   funders: number,
   loansMade: number,
   totalValueLocked: number,
+}
+
+export type ContactSummary = {
+  contact: string,
+  phone: string,
+  address: string,
+}
+
+export type FundSummary = {
+  amount: number,
+}
+
+export type StakeLoanParamList = {
+  approved: boolean;
+  loanAddress: string;
+  amount: string;
+}
+
+export type RepayLoanParamList = {
+  loanAddress: string;
+  debt: string;
 }

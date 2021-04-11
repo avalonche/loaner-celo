@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text as DefaultText, View as DefaultView, TouchableOpacityProps } from 'react-native';
+import { Text as DefaultText, View as DefaultView, TouchableOpacityProps, TextStyle } from 'react-native';
 
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
@@ -70,7 +70,7 @@ export function GradientView(props: ViewProps) {
   );
 }
 
-export function ContainedButton(props: TouchableOpacityProps & { text: string }) {
+export function ContainedButton(props: TouchableOpacityProps & { text: string } & {textStyles?: TextStyle}) {
   return (<TouchableOpacity {...props} style={[{
       backgroundColor: Colors.light.lightGray,
       padding: 10,
@@ -85,6 +85,7 @@ export function ContainedButton(props: TouchableOpacityProps & { text: string })
       textTransform: 'uppercase',
       color: '#000000',
       letterSpacing: 1.25,
+      ...props.textStyles,
     }}>
       {props.text}
     </Text>
@@ -94,7 +95,7 @@ export function ContainedButton(props: TouchableOpacityProps & { text: string })
 export function OutlinedButton(props: TouchableOpacityProps & { text: string }) {
   return (<TouchableOpacity {...props} style={[{
       backgroundColor: 'transparent',
-      borderColor: Colors.light.lightGray,
+      borderColor: props.disabled ? Colors.light.placeholder : Colors.light.lightGray,
       borderStyle: 'solid',
       borderWidth: 1,
       padding: 10,
@@ -107,7 +108,7 @@ export function OutlinedButton(props: TouchableOpacityProps & { text: string }) 
       fontFamily: GlobalStyles.consts.headerFontFamily,
       fontSize: GlobalStyles.consts.primaryFontSize,
       textTransform: 'uppercase',
-      color: Colors.light.lightGray,
+      color: props.disabled ? Colors.light.placeholder : Colors.light.lightGray,
       letterSpacing: 1.25,
     }}>
       {props.text}

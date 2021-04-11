@@ -1,31 +1,66 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  getFocusedRouteNameFromRoute,
+  RouteProp,
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
-import { StyleSheet } from "react-native";
-
+import { StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import TabTwoScreen from "../screens/TabTwoScreen";
-import CommunitiesScreen from "../screens/CommunitiesScreen";
 import GlobalStyles from "../constants/GlobalStyles";
+import useColorScheme from "../hooks/useColorScheme";
+import CommunitiesScreen from "../screens/browse/CommunitiesScreen";
+import CommunityScreen from "../screens/browse/CommunityScreen";
+import FundedScreen from "../screens/browse/fund/FundedScreen";
+import FundingScreen from "../screens/browse/fund/FundingScreen";
+import AddContactScreen from "../screens/browse/manage/AddContactScreen";
+import AddedScreen from "../screens/browse/manage/AddedScreen";
+import ManageLoansScreen from "../screens/browse/manage/ManageLoansScreen";
+import StakedScreen from "../screens/browse/manage/StakedScreen";
+import StakeLoanScreen from "../screens/browse/manage/StakeLoanScreen";
+import RepaidScreen from "../screens/loan/RepaidScreen";
+import RepayLoanScreen from "../screens/loan/RepayLoanScreen";
+import RequestLoanScreen from "../screens/loan/RequestLoanScreen";
+import SubmitLoanScreen from "../screens/loan/SubmitLoanScreen";
+import SubmittedScreen from "../screens/loan/SubmittedScreen";
+import UserLoansScreen from "../screens/loan/UserLoansScreen";
+import Profile from "../screens/ProfileScreen";
+import TabTwoScreen from "../screens/TabTwoScreen";
 import {
   BottomTabParamList,
-  TabOneParamList,
-  TabTwoParamList,
-  TabThreeParamList,
   TabFourParamList,
+  TabOneParamList,
+  TabThreeParamList,
+  TabTwoParamList,
 } from "../types";
-import FundingScreen from "../screens/FundingScreen";
-import Profile from "../screens/ProfileScreen";
-import RequestLoanScreen from "../screens/RequestLoanScreen";
-import SubmitLoanScreen from "../screens/SubmitLoanScreen";
-import ManageLoansScreen from "../screens/ManageLoansScreen";
-import UserLoansScreen from "../screens/UserLoansScreen";
-import ManageCommunitiesScreen from "../screens/ManageCommunitiesScreen";
-import CommunityScreen from "../screens/CommunityScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+const getIsTabBarVisible = (
+  route: RouteProp<BottomTabParamList, keyof BottomTabParamList>
+) => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Browse";
+
+  const noTabRoutes = [
+    "Fund",
+    "Funded",
+    "AddContact",
+    "Added",
+    "Manage",
+    "ManageLoans",
+    "StakeLoan",
+    "Staked",
+    "RequestLoan",
+    "SubmitLoan",
+    "Submitted",
+    "RepayLoan",
+    "Repaid",
+  ];
+  if (noTabRoutes.indexOf(routeName) > -1) {
+    return false;
+  }
+  return true;
+};
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
@@ -33,10 +68,12 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Browse"
+      screenOptions={({ route }) => ({
+        tabBarVisible: getIsTabBarVisible(route),
+      })}
       tabBarOptions={{
         activeTintColor: Colors[colorScheme].tint,
         style: {
-          paddingTop: 10,
           height: 70,
           alignItems: "center",
         },
@@ -93,7 +130,13 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof MaterialIcons>["name"];
   color: string;
 }) {
-  return <MaterialIcons size={20} style={{ marginBottom: -3 }} {...props} />;
+  return (
+    <MaterialIcons
+      size={20}
+      style={{ marginBottom: -3, paddingTop: 10 }}
+      {...props}
+    />
+  );
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -121,6 +164,67 @@ function BrowseTabNavigator() {
         component={FundingScreen}
         options={{ headerTitle: "Fund Community", ...headerStyleOptions }}
       />
+      <BrowseTabStack.Screen
+        name="Funded"
+        component={FundedScreen}
+        options={{
+          headerTitle: "",
+          headerLeft: () => null,
+          ...headerStyleOptions,
+        }}
+      />
+      <BrowseTabStack.Screen
+        name="AddContact"
+        component={AddContactScreen}
+        options={{
+          headerTitle: "",
+          headerRight: ({ tintColor }) => (
+            <TouchableOpacity>
+              <MaterialIcons
+                size={30}
+                name="qr-code"
+                color={tintColor!}
+                style={{ marginRight: 10 }}
+              />
+            </TouchableOpacity>
+          ),
+          ...headerStyleOptions,
+        }}
+      />
+      <BrowseTabStack.Screen
+        name="Added"
+        component={AddedScreen}
+        options={{
+          headerTitle: "",
+          headerLeft: () => null,
+          ...headerStyleOptions,
+        }}
+      />
+      <BrowseTabStack.Screen
+        name="ManageLoans"
+        component={ManageLoansScreen}
+        options={{
+          headerTitle: "Manage Loans",
+          ...headerStyleOptions,
+        }}
+      />
+      <BrowseTabStack.Screen
+        name="StakeLoan"
+        component={StakeLoanScreen}
+        options={{
+          headerTitle: "Manage Loan",
+          ...headerStyleOptions,
+        }}
+      />
+      <BrowseTabStack.Screen
+        name="Staked"
+        component={StakedScreen}
+        options={{
+          headerTitle: "",
+          headerLeft: () => null,
+          ...headerStyleOptions,
+        }}
+      />
     </BrowseTabStack.Navigator>
   );
 }
@@ -135,22 +239,6 @@ function ProfileTabNavigator() {
         component={Profile}
         options={{
           headerTitle: "Profile",
-          ...headerStyleOptions,
-        }}
-      />
-      <ProfileTabStack.Screen
-        name="ManageLoans"
-        component={ManageLoansScreen}
-        options={{
-          headerTitle: "Manage Loans",
-          ...headerStyleOptions,
-        }}
-      />
-      <ProfileTabStack.Screen
-        name="ManageCommunities"
-        component={ManageCommunitiesScreen}
-        options={{
-          headerTitle: "Manage Communities",
           ...headerStyleOptions,
         }}
       />
@@ -184,6 +272,32 @@ function LoanTabNavigator() {
         component={SubmitLoanScreen}
         options={{
           headerTitle: "Submit Loan",
+          ...headerStyleOptions,
+        }}
+      />
+      <LoanTabStack.Screen
+        name="Submitted"
+        component={SubmittedScreen}
+        options={{
+          headerTitle: "",
+          headerLeft: () => null,
+          ...headerStyleOptions,
+        }}
+      />
+      <LoanTabStack.Screen
+        name="RepayLoan"
+        component={RepayLoanScreen}
+        options={{
+          headerTitle: "Repay Loan",
+          ...headerStyleOptions,
+        }}
+      />
+      <LoanTabStack.Screen
+        name="Repaid"
+        component={RepaidScreen}
+        options={{
+          headerTitle: "",
+          headerLeft: () => null,
           ...headerStyleOptions,
         }}
       />

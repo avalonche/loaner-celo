@@ -22,6 +22,9 @@ export interface Loan {
   status: LoanStatus;
   internalStatus: InternalLoanStatus;
   borrower: string;
+  pool: string;
+  balance: string;
+  start: string;
 }
 
 export enum LoanStatus {
