@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, useContext, useMemo, useReducer, useState } from "react";
-import { RESET_USER_INFO, SET_USER_BALANCE, SET_USER_CELO_WALLET_INFO } from "../constants";
+import { RESET_USER_INFO, SET_BORROWER, SET_MANAGER, SET_USER_BALANCE, SET_USER_CELO_WALLET_INFO } from "../constants";
 import { UserActions } from "../types/actions";
 import { Role, User, Wallet } from "../types/state";
 
@@ -32,6 +32,12 @@ const userReducer = (state = INITIAL_USER_STATE, action: UserActions) => {
     case SET_USER_BALANCE:
       const wallet = {...state.wallet, balance: action.payload}
       return {...state, wallet}
+    case SET_MANAGER:
+      let role = {...state.role, isManager: action.payload}
+      return {...state, role}
+    case SET_BORROWER:
+      role = {...state.role, isBorrower: action.payload}
+      return {...state, role }
   }
 };
 
@@ -62,10 +68,16 @@ export const useUserContext = () => {
   const setUserBalance = (balance: string) => {
     dispatch({ type: SET_USER_BALANCE, payload: balance });
   }
+  const setManagerRole = (isManager: boolean) => {
+    dispatch({ type: SET_MANAGER, payload: isManager });
+  }
+  const setBorrowerRole = (isBorrower: boolean) => {
+    dispatch({ type: SET_BORROWER, payload: isBorrower });
+  }
 
   const clearUser = () => {
     dispatch({ type: RESET_USER_INFO, payload: undefined });
   }
 
-  return { wallet, role, setUserWallet, setUserBalance, clearUser };
+  return { wallet, role, setUserWallet, setUserBalance, setManagerRole, setBorrowerRole, clearUser };
 }

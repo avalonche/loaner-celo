@@ -1,12 +1,12 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
-import { View as DefaultView, Image} from 'react-native';
-import { StyleSheet } from "react-native";
-
-import Layout from '../constants/Layout';
+import { Image, StyleSheet, View as DefaultView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import GlobalStyles from '../constants/GlobalStyles';
-import { CommunitySummary } from '../types';
-import { View, Text } from './Themed';
+import Layout from '../constants/Layout';
+import { CommunitySummary, TabOneParamList } from '../types';
+import { Text, View } from './Themed';
+
 
 /*
   Adapted this code from: https://stackoverflow.com/a/9462382 
@@ -17,7 +17,7 @@ import { View, Text } from './Themed';
   @param num: The number to format
   @param digits: The number of decimal places to include
 */
-export default function BrowseCommunityCard(props: CommunitySummary) {
+export default function BrowseCommunityCard(props: CommunitySummary & { onPress: () => void }) {
     function nFormatter(num: number, digits: number = 0) {
       var si = [
         { value: 1, symbol: "" },
@@ -38,7 +38,9 @@ export default function BrowseCommunityCard(props: CommunitySummary) {
   
     return (
       // Add on press prop to navigate to community detail screen
-      <TouchableOpacity style={{
+      <TouchableOpacity
+      onPress={props.onPress} 
+      style={{
         width: Layout.window.width * 0.9 - 10,
         flexDirection: 'column',
         marginTop: 10,

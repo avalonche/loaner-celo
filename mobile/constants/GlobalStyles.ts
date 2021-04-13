@@ -9,6 +9,8 @@ const consts = {
   headerFontFamily: 'Montserrat_500Medium',
   secondaryFontFamily: 'Roboto_500Medium',
   headerContainerHeight: 120,
+  padding: 36,
+  margin: 36,
 };
 
 export const styles = StyleSheet.create({
