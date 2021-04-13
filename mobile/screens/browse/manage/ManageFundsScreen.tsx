@@ -48,8 +48,9 @@ export default function ManageFundsScreen({
         amountCUSD
       ),
     };
-    const receipt = await celoWalletRequest([depositTx], "deposit moola", kit)
-    console.log(receipt);
+    const receipt = await celoWalletRequest([depositTx], "deposit moola", kit);
+    // console.log(receipt);
+    navigation.navigate("Success", {amount: depositAmount, message: "deposited into Moola Markets", ...route.params});
   }
   const withdrawPool = async (currencyAmount: uint256) => {
     const web3 = new Web3(config.jsonRpc);
@@ -73,7 +74,8 @@ export default function ManageFundsScreen({
       ),
     };
     const receipt = await celoWalletRequest([withdrawTx], "withdraw moola", kit)
-    console.log(receipt);
+    // console.log(receipt);
+    navigation.navigate("Success", {amount: withdrawAmount, message: "withdrawn from Moola Markets", ...route.params});
   }
   return (
     <GradientView style={styles.container}>
