@@ -25,3 +25,7 @@ yarn test
 ## Deployment
 
 not deployed yet
+
+## Figma Designs
+
+https://www.figma.com/file/zqQYDMcWqvkqlaHuRBBe1h/Loanr?node-id=0%3A1
