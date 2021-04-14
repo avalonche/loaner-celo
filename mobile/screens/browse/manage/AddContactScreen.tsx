@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View,
+  View
 } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import {
@@ -17,13 +17,12 @@ import {
   List,
   Modal,
   Portal,
-  Provider,
+  Provider
 } from "react-native-paper";
 import Web3 from "web3";
 import {
   ContainedButton,
-  GradientView,
-  OutlinedButton,
+  GradientView
 } from "../../../components/Themed";
 import config from "../../../config";
 import Colors from "../../../constants/Colors";
@@ -55,7 +54,7 @@ export default function AddContactScreen({
       phone: borrowerAddress,
       address: borrowerAddress,
     });
-  }
+  };
 
   const showModal = (borrower: ContactSummary) => {
     setSelectedBorrower(borrower);
@@ -73,14 +72,14 @@ export default function AddContactScreen({
     const addBorrowerTxObject: Transaction = {
       from: wallet.address,
       to: communityContract.options.address,
-      txObject: await communityContract.methods.addBorrower(borrower),
+      txObject: await communityContract.methods.addBorrower(borrower.address),
     };
     await celoWalletRequest([addBorrowerTxObject], "addborrower", kit);
     setBorrower("");
     setSelectedBorrower(undefined);
     setLastSelect(selectedBorrower);
     hideModal();
-    navigation.navigate("Added", {...borrower, ...route.params});
+    navigation.navigate("Added", { ...borrower, ...route.params });
   };
 
   return (
@@ -187,8 +186,10 @@ export default function AddContactScreen({
                 )
                 .map((contact, index) => (
                   <>
-                    <TouchableOpacity onPress={() => showModal(contact)} 
-                        key={index}>
+                    <TouchableOpacity
+                      onPress={() => showModal(contact)}
+                      key={index}
+                    >
                       <List.Item
                         titleStyle={styles.phone}
                         title={contact.phone}
@@ -224,15 +225,20 @@ export default function AddContactScreen({
   );
 }
 
-const addresses = ["0xcd421b34F15802b534EC1Dc98B98Ee6CCB416114", "0x7520f8e4b33e869a23a80bd6bef44eed0d3d23fa", "0xBB80D3289e3F8Ea4f56b90Da26644276A9bA89B2"];
+const addresses = [
+  "0xcd421b34F15802b534EC1Dc98B98Ee6CCB416114",
+  "0x7520f8e4b33e869a23a80bd6bef44eed0d3d23fa",
+  "0xBB80D3289e3F8Ea4f56b90Da26644276A9bA89B2",
+  "0x49621fab393e9988a7b14c8a72a3220ca6cf314a",
+];
 const generateContacts = (): ContactSummary[] => {
   faker.seed(123);
   const fakeContacts: ContactSummary[] = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < addresses.length; i++) {
     fakeContacts.push({
       contact: `${faker.name.firstName()} ${faker.name.lastName()}`,
       phone: faker.phone.phoneNumberFormat(2),
-      address: i === 0 ? addresses[0] : addresses[1],
+      address: addresses[i],
     });
   }
   return fakeContacts;
