@@ -8,7 +8,7 @@ The high interest rates of micro credit and mico financing is often attributed t
 
 ## Architecture
 
-The project is currently separated into two packages. `smart-contracts` contains all the Solidity code and smart contract logic. `mobile` contains the react native mobile app built with expo. 
+The project is currently separated into two packages. `smart-contracts` contains all the Solidity code and smart contract logic. `mobile` contains the react native mobile app built with expo.
 
 ### Smart Contracts
 
@@ -87,6 +87,31 @@ expo start
 Make sure you put the community, community pool and loan factory addresses inside the `config.ts` file in order to use the addresses you deployed on alfajores.
 
 ## Experience / About us
+
+We're a bunch of recently/about-to-be graduated software engineers from Sydney, Australia. We met each out during our university
+studies, united over a shared interest in blockchain, smart contracts and a hunger to democratise technology for all.
+
+The idea of Loanr was born out of the revelation that [1.6 billion](https://www.gfmag.com/global-data/economic-data/worlds-most-unbanked-countries) people around the world remain unbanked.
+That means no access to financial products like loans and investments, or even basic protections for one's hard-earned funds. We made Loanr with the hope that it will offer a viable
+alternative to traditional financial products in the form of microfinancing.
+
+### Our experience building Loanr
+We asked ourselves individually how we felt as we built Loanr:
+
+#### Avalonche
+
+#### chloesli
+
+#### lucylq
+
+#### weilonying
+I mainly worked on the designs, and part of the frontend development for this hackathon. I also
+assisted with debugging and testing the contract calls that avalonche wrote. Blockchain development on
+mobile is still in its early stages and I found Celo's mobile-first approach to be a refreshing
+step towards making decentralised finance accessible to all. The main pain point for me is mainly
+directed towards the documentation which is still lacking in several places (although compared to libraries, still pretty good).
+I also ran into a few frustrating places where errors occurred where the stack trace didn't provide
+anything useful. Improving in these two areas would go a long way to improving dev experience on Celo.
 
 ## Links
 
