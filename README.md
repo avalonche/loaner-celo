@@ -116,6 +116,10 @@ We asked ourselves individually how we felt as we built Loanr:
 
 #### chloesli
 
+I assisted with frontend development and created UI components. 
+
+This hackathon was my first working with a blockchain product that interacts with smart contracts. I really enjoyed working on a product which I truly believe could help the world, and learning more about DeFi and the Microfinance industry. 
+
 #### lucylq
 Worked on the Moola function calls and screen. 
 
