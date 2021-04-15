@@ -113,9 +113,11 @@ directed towards the documentation which is still lacking in several places (alt
 I also ran into a few frustrating places where errors occurred where the stack trace didn't provide
 anything useful. Improving in these two areas would go a long way to improving dev experience on Celo.
 
+But overall, I had fun taking part in this hackathon.
+
 ## Links
 
-(Design board)[https://www.figma.com/file/zqQYDMcWqvkqlaHuRBBe1h/Loanr?node-id=0%3A1]
-(Expo Build)[https://expo.io/@avalonche/projects/loaner]
+[Design board](https://www.figma.com/file/zqQYDMcWqvkqlaHuRBBe1h/Loanr?node-id=0%3A1)
+[Expo Build](https://expo.io/@avalonche/projects/loaner)
 
 Built for the Celo Defi Hackathon.
