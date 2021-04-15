@@ -118,6 +118,7 @@ But overall, I had fun taking part in this hackathon.
 ## Links
 
 [Design board](https://www.figma.com/file/zqQYDMcWqvkqlaHuRBBe1h/Loanr?node-id=0%3A1)
+
 [Expo Build](https://expo.io/@avalonche/projects/loaner)
 
 Built for the Celo Defi Hackathon.
