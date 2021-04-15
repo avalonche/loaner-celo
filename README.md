@@ -4,6 +4,9 @@ Loanr (pronounced "Loaner") is a microfinancing mobile app built on top of the C
 
 Loanr is built using React Native, powered by smart contracts written in Solidity.
 
+![app](https://user-images.githubusercontent.com/7235102/114803789-f816f580-9d54-11eb-834f-66e815f605dc.png)
+
+
 # Loanr Smart Contracts
 
 Uncollateralized lending protocol built on Celo. While collateralized lending has seen dramatic growth and use on the Ethereum blockchain, it is not capital efficient nor lending in the sense that a line of credit is extended to the borrower. It is impractical in use cases for loans such as covering a sudden medical emergency or capital to start your own business, where it unreasonable to expect overcollaterization for a loan.
