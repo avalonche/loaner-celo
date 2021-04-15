@@ -122,7 +122,7 @@ Worked on the Moola function calls and screen.
 My first time developing on the blockchain and I found smart contracts to be pretty cool; essentially any type of logic can be embedded in them. Also interesting to consider how we can write logic to incentivize users to repay loans. The very concept of uncollaterized lending seems to encourage theft, so it becomes a matter of making the incentive for repayment stronger than the incentive to default.
 
 #### weilonying
-* Worked on the designs, and part of the frontend development for this hackathon.
+* Created the UI/UX design, and part of the frontend development for this hackathon.
 * Assisted with debugging and testing the contract calls that avalonche wrote. 
 
 Blockchain development on mobile is still in its early stages and I found Celo's mobile-first approach to be a refreshing
