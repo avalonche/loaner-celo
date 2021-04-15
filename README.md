@@ -4,7 +4,7 @@ Loanr (pronounced "Loaner") is a microfinancing mobile app built on top of the C
 
 Loanr is built using React Native, powered by smart contracts written in Solidity.
 
-![app](https://user-images.githubusercontent.com/7235102/114803789-f816f580-9d54-11eb-834f-66e815f605dc.png)
+![app2](https://user-images.githubusercontent.com/7235102/114805992-d4ee4500-9d58-11eb-9601-50d656f4365d.png)
 
 ---
 ![loanr smart contracts](https://user-images.githubusercontent.com/7235102/114804830-cd2da100-9d56-11eb-88eb-079662f2b2c0.png)
