@@ -1,4 +1,4 @@
-![loanr-cropped](https://user-images.githubusercontent.com/7235102/114803187-e2550080-9d53-11eb-9ec1-371f7858910c.png)
+![loanr-cropped](https://user-images.githubusercontent.com/7235102/114803270-03b5ec80-9d54-11eb-944c-76eb18b029db.png)
 
 Loanr (pronounced "Loaner") is a microfinancing mobile app built on top of the Celo blockchain. The app enables communities to pool money which can be used to make loans to its members. Members can request to take out a loan in the app, withdraw and repay the loan all within the app. Community leaders also have the ability to add members by wallet address/linked phone contact and approve loans within the app.
 
