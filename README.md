@@ -117,17 +117,16 @@ We asked ourselves individually how we felt as we built Loanr:
 #### chloesli
 
 #### lucylq
+Worked on the Moola function calls and screen. 
+
+My first time developing on the blockchain and I found smart contracts to be pretty cool; essentially any type of logic can be embedded in them. Also interesting to consider how we can write logic to incentivize users to repay loans. The very concept of uncollaterized lending seems to encourage theft, so it becomes a matter of making the incentive for repayment stronger than the incentive to default.
 
 #### weilonying
-I mainly worked on the designs, and part of the frontend development for this hackathon. I also
-assisted with debugging and testing the contract calls that avalonche wrote. Blockchain development on
-mobile is still in its early stages and I found Celo's mobile-first approach to be a refreshing
-step towards making decentralised finance accessible to all. The main pain point for me is mainly
-directed towards the documentation which is still lacking in several places (although compared to libraries, still pretty good).
-I also ran into a few frustrating places where errors occurred where the stack trace didn't provide
-anything useful. Improving in these two areas would go a long way to improving dev experience on Celo.
+* Worked on the designs, and part of the frontend development for this hackathon.
+* Assisted with debugging and testing the contract calls that avalonche wrote. 
 
-But overall, I had fun taking part in this hackathon.
+Blockchain development on mobile is still in its early stages and I found Celo's mobile-first approach to be a refreshing
+step towards making decentralised finance accessible to all. One point of feedback: more documentation containing more detail, design patterns and examples would be nice.
 
 ## Links
 
