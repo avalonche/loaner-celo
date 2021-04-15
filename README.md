@@ -6,8 +6,8 @@ Loanr is built using React Native, powered by smart contracts written in Solidit
 
 ![app](https://user-images.githubusercontent.com/7235102/114803789-f816f580-9d54-11eb-834f-66e815f605dc.png)
 
-
-# Loanr Smart Contracts
+---
+![loanr smart contracts](https://user-images.githubusercontent.com/7235102/114804830-cd2da100-9d56-11eb-88eb-079662f2b2c0.png)
 
 Uncollateralized lending protocol built on Celo. While collateralized lending has seen dramatic growth and use on the Ethereum blockchain, it is not capital efficient nor lending in the sense that a line of credit is extended to the borrower. It is impractical in use cases for loans such as covering a sudden medical emergency or capital to start your own business, where it unreasonable to expect overcollaterization for a loan.
 
@@ -32,6 +32,7 @@ This contract allows the creation of community and community pools, but only fro
 This contract contains the core logic for community managers, such as adding members to the community, approving loans.
 
 #### `LoanerPool.sol`
+
 
 This contains logic for the community fund and allows any to join or withdraw from the pool. Loans are also funded from this pool, as well as depositing and withdrawing idle funds to and from moola markets.
 
@@ -95,7 +96,8 @@ expo start
 
 Make sure you put the community, community pool and loan factory addresses inside the `config.ts` file in order to use the addresses you deployed on alfajores.
 
-## Experience / About us
+---
+![experience about us](https://user-images.githubusercontent.com/7235102/114805113-44fbcb80-9d57-11eb-9063-4d518c2eddcd.png)
 
 We're a bunch of recently/about-to-be graduated software engineers from Sydney, Australia. We met each other during our university
 studies, united over a shared interest in blockchain, smart contracts and a hunger to democratise technology for all.
