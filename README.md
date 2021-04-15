@@ -1,4 +1,13 @@
-# Loaner Smart Contracts
+![loanr-cropped](https://user-images.githubusercontent.com/7235102/114803270-03b5ec80-9d54-11eb-944c-76eb18b029db.png)
+
+Loanr (pronounced "Loaner") is a microfinancing mobile app built on top of the Celo blockchain. The app enables communities to pool money which can be used to make loans to its members. Members can request to take out a loan in the app, withdraw and repay the loan all within the app. Community leaders also have the ability to add members by wallet address/linked phone contact and approve loans within the app.
+
+Loanr is built using React Native, powered by smart contracts written in Solidity.
+
+![app2](https://user-images.githubusercontent.com/7235102/114805992-d4ee4500-9d58-11eb-9601-50d656f4365d.png)
+
+---
+![loanr smart contracts](https://user-images.githubusercontent.com/7235102/114804830-cd2da100-9d56-11eb-88eb-079662f2b2c0.png)
 
 Uncollateralized lending protocol built on Celo. While collateralized lending has seen dramatic growth and use on the Ethereum blockchain, it is not capital efficient nor lending in the sense that a line of credit is extended to the borrower. It is impractical in use cases for loans such as covering a sudden medical emergency or capital to start your own business, where it unreasonable to expect overcollaterization for a loan.
 
@@ -8,7 +17,7 @@ The high interest rates of micro credit and mico financing is often attributed t
 
 ## Architecture
 
-The project is currently separated into two packages. `smart-contracts` contains all the Solidity code and smart contract logic. `mobile` contains the react native mobile app built with expo. 
+The project is currently separated into two packages. `smart-contracts` contains all the Solidity code and smart contract logic. `mobile` contains the react native mobile app built with expo.
 
 ### Smart Contracts
 
@@ -23,6 +32,7 @@ This contract allows the creation of community and community pools, but only fro
 This contract contains the core logic for community managers, such as adding members to the community, approving loans.
 
 #### `LoanerPool.sol`
+
 
 This contains logic for the community fund and allows any to join or withdraw from the pool. Loans are also funded from this pool, as well as depositing and withdrawing idle funds to and from moola markets.
 
@@ -86,11 +96,42 @@ expo start
 
 Make sure you put the community, community pool and loan factory addresses inside the `config.ts` file in order to use the addresses you deployed on alfajores.
 
-## Experience / About us
+---
+![experience about us](https://user-images.githubusercontent.com/7235102/114805113-44fbcb80-9d57-11eb-9063-4d518c2eddcd.png)
+
+We're a bunch of recently/about-to-be graduated software engineers from Sydney, Australia. We met each other during our university
+studies, united over a shared interest in blockchain, smart contracts and a hunger to democratise technology for all.
+
+The idea of Loanr was born out of the revelation that [1.6 billion](https://www.gfmag.com/global-data/economic-data/worlds-most-unbanked-countries) people around the world remain unbanked.
+That means no access to financial products like loans and investments, or even basic protections for one's hard-earned funds. We made Loanr with the hope that it will offer a viable
+alternative to traditional financial products in the form of microfinancing.
+
+### Our experience building Loanr
+We asked ourselves individually how we felt as we built Loanr:
+
+#### Avalonche
+
+* Wrote smart contracts and contract calls to Celo wallet from React Native
+* Interesting to think about token economics and designing a smart contract protocol as currently writing my thesis on smart contracts
+
+#### chloesli
+
+#### lucylq
+Worked on the Moola function calls and screen. 
+
+My first time developing on the blockchain and I found smart contracts to be pretty cool; essentially any type of logic can be embedded in them. Also interesting to consider how we can write logic to incentivize users to repay loans. The very concept of uncollaterized lending seems to encourage theft, so it becomes a matter of making the incentive for repayment stronger than the incentive to default.
+
+#### weilonying
+* Created the UI/UX design, and part of the frontend development for this hackathon.
+* Assisted with debugging and testing the contract calls that avalonche wrote. 
+
+Blockchain development on mobile is still in its early stages and I found Celo's mobile-first approach to be a refreshing
+step towards making decentralised finance accessible to all. One point of feedback: more documentation containing more detail, design patterns and examples would be nice.
 
 ## Links
 
-(Design board)[https://www.figma.com/file/zqQYDMcWqvkqlaHuRBBe1h/Loanr?node-id=0%3A1]
-(Expo Build)[https://expo.io/@avalonche/projects/loaner]
+[Design board](https://www.figma.com/file/zqQYDMcWqvkqlaHuRBBe1h/Loanr?node-id=0%3A1)
+
+[Expo Build](https://expo.io/@avalonche/projects/loaner)
 
 Built for the Celo Defi Hackathon.
