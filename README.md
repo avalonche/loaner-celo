@@ -105,6 +105,9 @@ We asked ourselves individually how we felt as we built Loanr:
 
 #### Avalonche
 
+* Wrote smart contracts and contract calls to Celo wallet from React Native
+* Interesting to think about token economics and designing a smart contract protocol as currently writing my thesis on smart contracts
+
 #### chloesli
 
 #### lucylq
