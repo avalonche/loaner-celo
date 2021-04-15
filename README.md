@@ -88,7 +88,7 @@ Make sure you put the community, community pool and loan factory addresses insid
 
 ## Experience / About us
 
-We're a bunch of recently/about-to-be graduated software engineers from Sydney, Australia. We met each out during our university
+We're a bunch of recently/about-to-be graduated software engineers from Sydney, Australia. We met each other during our university
 studies, united over a shared interest in blockchain, smart contracts and a hunger to democratise technology for all.
 
 The idea of Loanr was born out of the revelation that [1.6 billion](https://www.gfmag.com/global-data/economic-data/worlds-most-unbanked-countries) people around the world remain unbanked.
