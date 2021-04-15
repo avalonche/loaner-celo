@@ -1,4 +1,7 @@
-# Loaner Smart Contracts
+# Loanr
+Loanr (pronounced "Loaner") is a microfinancing mobile app built on top of the Celo blockchain. The app enables communities to pool money which can be used to make loans to its members. Members can request to take out a loan in the app, withdraw and repay the loan all within the app. Community leaders also have the ability to add members by wallet address/linked phone contact and approve loans within the app.
+
+# Loanr Smart Contracts
 
 Uncollateralized lending protocol built on Celo. While collateralized lending has seen dramatic growth and use on the Ethereum blockchain, it is not capital efficient nor lending in the sense that a line of credit is extended to the borrower. It is impractical in use cases for loans such as covering a sudden medical emergency or capital to start your own business, where it unreasonable to expect overcollaterization for a loan.
 
